@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация селлера</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .login-screen {
+            position: relative;
+            width: 430px;
+            height: 932px;
+            background: #151316;
+            border-radius: 26px;
+            overflow: hidden;
+        }
+        .background {
+            position: absolute;
+            width: 904px;
+            height: 1037px;
+            left: -215px;
+            top: 126px;
+        }
+        .ellipse-1, .ellipse-2, .ellipse-3 {
+            position: absolute;
+            width: 397px;
+            height: 397px;
+            border-radius: 50%;
+        }
+        .ellipse-1 {
+            left: 292px;
+            top: 126px;
+            background: radial-gradient(50% 50% at 50% 50%, #B379DF 0%, rgba(54, 0, 96, 0) 100%);
+            opacity: 0.58;
+        }
+        .ellipse-2 {
+            left: -215px;
+            top: 745px;
+            background: radial-gradient(50% 50% at 50% 50%, #C45647 0%, rgba(210, 90, 99, 0) 100%);
+            opacity: 0.58;
+        }
+        .ellipse-3 {
+            left: 215px;
+            top: 766px;
+            background: radial-gradient(50% 50% at 50% 50%, #B379DF 0%, rgba(54, 0, 96, 0) 100%);
+            opacity: 0.58;
+        }
+        .content {
+            position: absolute;
+            width: 447px;
+            height: 803px;
+            left: -2px;
+            top: 244px;
+            background: radial-gradient(90.16% 143.01% at 15.32% 21.04%, rgba(179, 121, 223, 0.2) 0%, rgba(204, 88, 84, 0.016) 77.08%, rgba(179, 121, 223, 0.2) 100%);
+            backdrop-filter: blur(40px);
+            border-radius: 59px;
+        }
+        .title {
+            position: absolute;
+            width: 334px;
+            left: 48px;
+            top: 38px;
+            text-align: center;  /* Центрируем текст */
+        }
+        .title h1 {
+            font-weight: 600;
+            font-size: 40.3288px;
+            line-height: 60px;
+            color: #EFEFEF;
+            margin: 0;
+        }
+        .title p {
+            font-weight: 500;
+            font-size: 14.33px;
+            line-height: 21px;
+            color: #A4A4A4;
+            margin-top: -5px;
+            width: 100%;  /* Устанавливаем ширину 100% для центрирования */
+        }
+        .input-group {
+            position: relative;
+            width: 314px;
+            margin-left: 58px;
+            margin-bottom: 20px;
+        }
+        .input-group label {
+            display: block;
+            font-weight: 500;
+            font-size: 14.33px;
+            line-height: 21px;
+            color: #A4A4A4;
+            margin-bottom: 6px;
+        }
+        .input-group input {
+            width: 100%;
+            height: 55px;
+            background: radial-gradient(90.16% 143.01% at 15.32% 21.04%, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.0447917) 77.08%, rgba(255, 255, 255, 0) 100%);
+            backdrop-filter: blur(6.07811px);
+            border-radius: 8px;
+            border: none;
+            padding: 0 15px 0 40px;
+            font-size: 14.33px;
+            color: #A4A4A4;
+            box-sizing: border-box;
+        }
+        .input-icon {
+            position: absolute;
+            left: 15px;
+            top: 42px;
+            width: 20px;
+            height: 20px;
+        }
+        .email-input { margin-top: 142px; }
+        .password-strength {
+            display: none;  /* Скрываем индикатор по умолчанию */
+            align-items: center;
+            margin-top: 10px;  /* Увеличиваем отступ сверху */
+        }
+        .strength-indicator {
+            width: 20px;  /* Увеличиваем ширину индикатора */
+            height: 4px;  /* Увеличиваем высоту индикатора */
+            background: #8F8F8F;
+            border-radius: 10px;
+            margin-right: 5px;  /* Увеличиваем отступ между индикаторами */
+        }
+        .strength-indicator.active {
+            background: #009606;
+        }
+        .strength-text {
+            font-size: 12px;  /* Увеличиваем размер шрифта */
+            color: #9FDBA1;
+            margin-left: 10px;  /* Увеличиваем отступ слева */
+        }
+        .signup-button {
+            width: 314px;
+            height: 50px;
+            margin-left: 58px;
+            margin-top: 20px;
+            background: linear-gradient(90.3deg, #9C3FE4 0.16%, #C65647 101.62%);
+            border-radius: 15px;
+            border: none;
+            font-weight: 500;
+            font-size: 17.9182px;
+            line-height: 27px;
+            color: #FFFFFF;
+            cursor: pointer;
+        }
+        .signup-with {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 11.25px;
+            color: #B6B6B6;
+            position: relative;
+        }
+        .signup-with::before,
+        .signup-with::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 98px;
+            height: 1px;
+            background: linear-gradient(270deg, rgba(217, 217, 217, 0.75) 0%, rgba(217, 217, 217, 0) 94.39%);
+        }
+        .signup-with::before {
+            left: 63px;
+        }
+        .signup-with::after {
+            right: 63px;
+            transform: rotate(180deg);
+        }
+        .decorative-elements-top {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.saly-16 {
+    position: absolute;
+    left: 85.12%;
+    right: -6.05%;
+    top: 24.68%;
+    bottom: 54.18%;
+    background: url(Saly-16.png);
+    mix-blend-mode: normal;
+    filter: blur(4.5px);
+}
+
+.illustration {
+    position: absolute;
+    width: 337.99px;
+    height: 238px;
+    left: 147px;
+    top: 8px;
+}
+
+.avatar {
+    position: absolute;
+    left: 34.19%;
+    right: -12.79%;
+    top: 0.86%;
+    bottom: 73.61%;
+    background: url(Avatar.png);
+}
+
+.ellipse-14 {
+    position: absolute;
+    width: 40.16px;
+    height: 39.84px;
+    left: 232px;
+    top: 23.28px;
+    background: #E1DFDF;
+    filter: blur(2px);
+    transform: rotate(-0.4deg);
+}
+
+.image-1 {
+    position: absolute;
+    width: 24px;
+    height: 30px;
+    left: 236px;
+    top: 28px;
+    background: url(image.png);
+    mix-blend-mode: multiply;
+}
+
+.objects {
+    position: absolute;
+    width: 477.4px;
+    height: 417.54px;
+    left: -14px;
+    top: -37px;
+}
+
+.front-shapes-1, .front-shapes-2, .front-shapes-3, .front-shapes-4 {
+    position: absolute;
+    background: url(front-shapes.png);
+}
+
+.front-shapes-1 {
+    width: 65.15px;
+    height: 53.51px;
+    left: 35.18px;
+    top: 326.97px;
+    filter: blur(11px);
+    transform: matrix(0.39, -0.92, -0.92, -0.39, 0, 0);
+}
+
+.front-shapes-2 {
+    width: 103.75px;
+    height: 85.23px;
+    left: 42.93px;
+    top: 109.28px;
+    filter: blur(10px);
+    transform: matrix(0.83, -0.55, -0.55, -0.83, 0, 0);
+}
+
+.front-shapes-3 {
+    width: 101.81px;
+    height: 68.53px;
+    left: 359.96px;
+    top: 380.54px;
+    filter: blur(2px);
+    transform: matrix(0.95, -0.32, -0.32, -0.95, 0, 0);
+}
+
+.front-shapes-4 {
+    width: 101.81px;
+    height: 68.53px;
+    left: 366.96px;
+    top: 60.54px;
+    filter: blur(2px);
+    transform: matrix(0.95, -0.32, -0.32, -0.95, 0, 0);
+}
+    </style>
+</head>
+<body>
+    <div class="login-screen">
+        <div class="background">
+            <div class="ellipse-1"></div>
+            <div class="ellipse-2"></div>
+            <div class="ellipse-3"></div>
+        </div>
+        <div class="objects">
+          <img src="decor.png" alt="Decorative Image" style="margin-top: 28px; margin-left: -6px;">
+      </div>      
+        <div class="content">
+          <div class="objects">
+            <img src="decor2.png" alt="Decorative Image" style="margin-top: 28px; margin-left: -6px;">
+        </div> 
+            <div class="title">
+                <h1>Стать селлером</h1>
+                <p>Бесплатно для всех. Без верификации</p>
+            </div>
+            <div class="input-group email-input">
+                <label for="email">Электронная почта</label>
+                <input type="email" id="email" placeholder="yourname@gmail.com">
+                <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#A4A4A4">
+                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                </svg>
+            </div>
+            <div class="input-group username-input">
+                <label for="username">Придумайте имя пользователя</label>
+                <input type="text" id="username" placeholder="@username">
+                <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#A4A4A4">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+            </div>
+            <div class="input-group password-input">
+                <label for="password">Придумайте пароль</label>
+                <input type="password" id="password" placeholder="••••••••">
+                <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#A4A4A4">
+                    <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+                </svg>
+                <div class="password-strength">
+                    <div class="strength-indicator"></div>
+                    <div class="strength-indicator"></div>
+                    <div class="strength-indicator"></div>
+                    <span class="strength-text">Слабый</span>
+                </div>
+            </div>
+            <button class="signup-button">Зарегистрироваться</button>
+            <div class="signup-with">
+                <span>Premarket Coins Team</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          const passwordInput = document.getElementById('password');
+          const strengthIndicators = document.querySelectorAll('.strength-indicator');
+          const strengthText = document.querySelector('.strength-text');
+          const passwordStrength = document.querySelector('.password-strength');
+
+          passwordInput.addEventListener('input', function() {
+              const password = this.value;
+              let strength = 0;
+
+              // Показываем индикатор только когда начат ввод пароля
+              if (password.length > 0) {
+                  passwordStrength.style.display = 'flex';
+              } else {
+                  passwordStrength.style.display = 'none';
+                  return;  // Выходим из функции, если пароль пустой
+              }
+
+              if (password.length >= 8) strength++;
+              if (password.match(/[a-z]/) && password.match(/[A-Z]/)) strength++;
+              if (password.match(/\d/)) strength++;
+              if (password.match(/[^a-zA-Z\d]/)) strength++;
+
+              strengthIndicators.forEach((indicator, index) => {
+                  if (index < strength) {
+                      indicator.classList.add('active');
+                  } else {
+                      indicator.classList.remove('active');
+                  }
+              });
+
+              switch(strength) {
+                  case 0:
+                  case 1:
+                      strengthText.textContent = 'Слабый';
+                      strengthText.style.color = '#FF4B4B';
+                      break;
+                  case 2:
+                      strengthText.textContent = 'Средний';
+                      strengthText.style.color = '#FFA500';
+                      break;
+                  case 3:
+                      strengthText.textContent = 'Хороший';
+                      strengthText.style.color = '#2ED8A7';
+                      break;
+                  case 4:
+                      strengthText.textContent = 'Надежный';
+                      strengthText.style.color = '#9FDBA1';
+                      break;
+              }
+          });
+      });
+  </script>
+</body>
+</html>
